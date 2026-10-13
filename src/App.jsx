@@ -9,7 +9,7 @@ function App() {
 
   const [playerOne, setPlayerOne] = useState("X");
   const [playerTwo, setPlayerTwo] = useState("0");
-  const [play, setPlay] = useState(playerOne);
+  const [play, setPlay] = useState('X');
 
   function fillBoard(i, j) {
 if(board[i][j] !== "") {return}
@@ -79,25 +79,28 @@ if(board[i][j] !== "") {return}
     ) {
       alert(play + " " + "Հաղթանակ");
     }
-    if (play === "X") {
-      setPlay("0");
-    } else {
-      setPlay("X");
-    }
-    setBoard(newBoard);
+ setPlay(play === playerOne ? playerTwo : playerOne);
+ setBoard(newBoard);
   }
-
   return (
     <>
-      <select
-        value={playerOne}
-        onChange={(e) => {
-          setPlayerOne(e.target.value);
-        }}
-      >
-        <option value="X">X</option>
-        <option value="0">0</option>
-      </select>
+   <select
+  value={playerOne}
+  onChange={(e) => {
+    const selected = e.target.value;
+    setPlayerOne(selected);
+    setPlayerTwo(selected === "X" ? "0" : "X");
+    setPlay(selected);
+    setBoard([
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ]);
+  }}
+>
+  <option value="X">X</option>
+  <option value="0">0</option>
+</select>
 
       <h2>Առաջին խաղացող՝ {playerOne}</h2>
       <h2>Հիմա խաղում է՝ {play}</h2>
