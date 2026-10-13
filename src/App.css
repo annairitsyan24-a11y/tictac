@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#root {
+  text-align: center;
+}
+select {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 15px;
+}
+h2 {
+  color: white;
+  margin: 8px 0;
+}
+.board {
+  margin-top: 25px;
+  padding: 10px;
+}
+.board div {
+  display: flex;
+}
+.board button {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.board div:first-child button:first-child {
+  border-radius: 15px 0 0 0;
+}
+.board div:first-child button:last-child {
+  border-radius: 0 15px 0 0;
+}
+.board div:last-child button:first-child {
+  border-radius: 0 0 0 15px;
+}
+.board div:last-child button:last-child {
+  border-radius: 0 0 15px 0;
+}
+.board button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+.board button span {
+  display: block;
+  animation: appear 0.2s ease;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
